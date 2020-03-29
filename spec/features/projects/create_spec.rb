@@ -1,11 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.feature "Project", :type => :feature do
+RSpec.feature "Project", type: :feature do
   scenario "Create a new project" do
     visit "/projects/new"
 
-    fill_in "Title", :with => "My Title"
-    fill_in "Description", :with => "Project Description"
+    fill_in "Title", with: "My Title"
+    fill_in "Description", with: "Project Description"
 
     click_button "Create Project"
 

@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.feature "Project", :type => :feature do
+RSpec.feature "Project", type: :feature do
   scenario "View a new project" do
     create(:project, title: "First Title")
     create(:project, title: "Second Title")
