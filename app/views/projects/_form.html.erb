@@ -1,0 +1,16 @@
+
+<%= render 'shared/errors', obj: @project %>
+
+<%= form_for(@project, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+  <div class="form-group">
+    <%= f.label :title %><br/>
+    <%= f.text_field :title, class: "form-control", placeholder: "Title", autofocus: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %><br/>
+    <%= f.text_area :description, class: "form-control", placeholder: "Description", autofocus: true %>
+  </div>
+  <div class="form-group">
+    <%= f.submit(@project.new_record? ? "Create Project" : "Update Project", class: 'btn btn-primary btn-large') %>
+  </div>
+<% end %>

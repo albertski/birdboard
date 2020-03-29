@@ -1,0 +1,6 @@
+example_id                                              | status | run_time        |
+------------------------------------------------------- | ------ | --------------- |
+./spec/contollers/projects_controllers_spec.rb[1:1:1:1] | failed | 0.02649 seconds |
+./spec/models/project_spec.rb[1:1]                      | passed | 0.02206 seconds |
+./spec/models/project_spec.rb[1:2:1]                    | passed | 0.1844 seconds  |
+./spec/models/project_spec.rb[1:2:2]                    | passed | 0.00464 seconds |
