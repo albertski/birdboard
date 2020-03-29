@@ -1,9 +1,10 @@
 example_id                                              | status | run_time        |
 ------------------------------------------------------- | ------ | --------------- |
-./spec/contollers/projects_controllers_spec.rb[1:1:1:1] | passed | 0.00892 seconds |
-./spec/contollers/projects_controllers_spec.rb[1:1:2:1] | passed | 0.01068 seconds |
-./spec/features/projects/create_spec.rb[1:1]            | passed | 0.07573 seconds |
-./spec/features/projects/view_spec.rb[1:1]              | passed | 0.06151 seconds |
-./spec/models/project_spec.rb[1:1]                      | passed | 0.0215 seconds  |
-./spec/models/project_spec.rb[1:2:1]                    | passed | 0.13808 seconds |
-./spec/models/project_spec.rb[1:2:2]                    | passed | 0.00533 seconds |
+./spec/contollers/projects_controllers_spec.rb[1:1:1:1] | passed | 0.00989 seconds |
+./spec/contollers/projects_controllers_spec.rb[1:1:2:1] | passed | 0.15777 seconds |
+./spec/features/projects/create_spec.rb[1:1]            | passed | 0.05472 seconds |
+./spec/features/projects/show_spec.rb[1:1]              | passed | 0.0687 seconds  |
+./spec/features/projects/view_spec.rb[1:1]              | passed | 0.02664 seconds |
+./spec/models/project_spec.rb[1:1]                      | passed | 0.00548 seconds |
+./spec/models/project_spec.rb[1:2:1]                    | passed | 0.00648 seconds |
+./spec/models/project_spec.rb[1:2:2]                    | passed | 0.0065 seconds  |
