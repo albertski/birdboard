@@ -1,5 +1,11 @@
+require "rails_helper"
 
 RSpec.feature "Project", type: :feature do
+  before do
+    user = create(:user)
+    login_as(user, :scope => :user)
+  end
+
   scenario "Create a new project" do
     visit "/projects/new"
 

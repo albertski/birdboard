@@ -1,3 +1,5 @@
 class Project < ApplicationRecord
-  validates_presence_of :title, :description
+  belongs_to :user
+
+  validates_presence_of :title, :description, :user
 end
