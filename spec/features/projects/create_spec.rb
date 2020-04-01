@@ -1,19 +1,29 @@
 require "rails_helper"
 
 RSpec.feature "Project", type: :feature do
-  before do
-    user = create(:user)
-    login_as(user, :scope => :user)
+  context "Logged In User" do
+    before do
+      user = create(:user)
+      login_as(user, :scope => :user)
+    end
+
+    scenario "Create a new project" do
+      visit "/projects/new"
+
+      fill_in "Title", with: "My Title"
+      fill_in "Description", with: "Project Description"
+
+      click_button "Create Project"
+
+      expect(page).to have_text("My Title")
+    end
   end
 
-  scenario "Create a new project" do
-    visit "/projects/new"
-
-    fill_in "Title", with: "My Title"
-    fill_in "Description", with: "Project Description"
-
-    click_button "Create Project"
-
-    expect(page).to have_text("My Title")
+  context "Logged Out User" do
+    scenario "Can't create a new project" do
+      visit "/projects/new"
+     # expect(page).not_to have_text("You must be logged in to perform this action")
+      expect(page).to have_current_path "/"
+    end
   end
 end
