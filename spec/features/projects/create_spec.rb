@@ -7,7 +7,7 @@ RSpec.feature "Project", type: :feature do
       login_as(user, :scope => :user)
     end
 
-    scenario "Create a new project" do
+    scenario "Can create a new project" do
       visit "/projects/new"
 
       fill_in "Title", with: "My Title"
