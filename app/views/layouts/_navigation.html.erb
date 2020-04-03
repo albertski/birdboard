@@ -1,0 +1,21 @@
+<nav class="bg-white section">
+  <div class="container mx-auto">
+    <div class="flex justify-between items-center py-2">
+      <h1><%= link_to(render(:partial => 'svgs/birdboard'), projects_path, class: 'navbar-brand') %></h1>
+      <div>
+        <!-- Right Side Of Navbar -->
+        <div class="flex items-center ml-auto">
+          <% if !user_signed_in? %>
+            <%= link_to 'Login', new_user_session_path, class: 'text-accent mr-4 no-underline hover:underline' %>
+            <%= link_to 'Register', new_user_registration_path, class: 'text-accent no-underline hover:underline' %>
+          <% else %>
+            <template>
+              <button class="flex items-center text-default no-underline text-sm focus:outline-none"></button>
+            </template>
+            <%= link_to "Logout", destroy_user_session_path, class: "nav-link", method: :delete %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
