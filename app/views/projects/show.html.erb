@@ -1,4 +1,31 @@
-<div class="row">
-  <h2><%= @project.title %></h2>
-  <div><%= @project.description %></div>
-</div>
+
+<%= render 'projects/header', current_path: @project.title %>
+
+<main>
+  <div class="lg:flex -mx-3">
+    <div class="lg:w-3/4 px-3">
+      <div class="mb-8">
+        <h2 class="text-gray text-large font-normal mb-3">Tasks</h2>
+
+        <div class="card mb-3">Lorim ipsum.</div>
+
+        <div class="card mb-3">Lorim ipsum.</div>
+
+        <div class="card">Lorim ipsum.</div>
+      </div>
+
+      <div class="mb-8">
+        <h2 class="text-gray text-large font-normal mb-3">General Notes</h2>
+
+        <textarea class="card mb-3 w-full" style="min-height: 200px;">Lorim ipsum.</textarea>
+
+        <textarea class="card mb-3 w-full" style="min-height: 200px;">Lorim ipsum.</textarea>
+
+        <textarea class="card w-full" style="min-height: 200px;">Lorim ipsum.</textarea>
+      </div>
+    </div>
+    <div class="lg:w-1/4 px-3">
+      <%= render 'projects/project', project: @project %>
+    </div>
+  </div>
+</main>
