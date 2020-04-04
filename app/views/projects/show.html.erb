@@ -7,11 +7,9 @@
       <div class="mb-8">
         <h2 class="text-gray text-large font-normal mb-3">Tasks</h2>
 
-        <div class="card mb-3">Lorim ipsum.</div>
-
-        <div class="card mb-3">Lorim ipsum.</div>
-
-        <div class="card">Lorim ipsum.</div>
+        <% @project.tasks.each do |task| %>
+          <%= render 'projects/tasks/task', task: task %>
+        <% end %>
       </div>
 
       <div class="mb-8">
