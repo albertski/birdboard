@@ -1,30 +1,24 @@
 require "rails_helper"
 
-# RSpec.feature "Task", type: :feature do
-#   context "Logged In User" do
-#     before do
-#       let project = create(:project)
-#       user = create(:user)
-#       login_as(user, :scope => :user)
-#     end
+RSpec.feature "Task", type: :feature do
+  context "Logged In User" do
+    let(:user) { create(:user) }
+    before do
+      login_as(user, :scope => :user)
+    end
 
-#     scenario "Can create a new task" do
-#       visit "/projects/#{project.id}/tasks"
+    it "Can create a new task when same user as project" do
+      project = create(:project, user: user)
+      visit "/projects/#{project.id}"
 
-#       fill_in "Title", with: "My Title"
-#       fill_in "Description", with: "Project Description"
+      task_body = "Create a new rspec test"
 
-#       click_button "Create Project"
+      fill_in "Add new task", with: task_body
 
-#       expect(page).to have_text("My Title")
-#     end
-#   end
+      submit_form '#new_task'
 
-#   context "Logged Out User" do
-#     scenario "Can't create a new project" do
-#       visit "/projects/new"
-#      # expect(page).not_to have_text("You must be logged in to perform this action")
-#       expect(page).to have_current_path "/"
-#     end
-#   end
-# end
+      expect(page).to have_text(task_body)
+      expect(page).to have_text(project.title)
+    end
+  end
+end

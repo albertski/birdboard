@@ -12,10 +12,8 @@
   <body class="bg-gray-100">
     <%= render 'layouts/navigation' %>
     <div class="section">
-      <%= render 'layouts/messages' %>
       <main class="container mx-auto py-6">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+        <%= render 'layouts/messages' %>
         <%= yield %>
       </main>
     </div>

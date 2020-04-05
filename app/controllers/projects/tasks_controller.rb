@@ -32,10 +32,10 @@ module Projects
       @task.project = Project.find(params[:project_id])
       respond_to do |format|
         if current_user.id == @task.project.user.id && @task.save
-          format.html { redirect_to @task, notice: "Task was successfully created." }
-          format.json { render :show, status: :created, location: @task }
+          format.html { redirect_to @task.project, notice: "Task was successfully created." }
+          format.json { render :show, status: :created, location: @task.project }
         else
-          format.html { render :new }
+          format.html { redirect_to @task.project, notice: "Task failed to be created." }
           format.json { render json: @task.errors, status: :unprocessable_entity }
         end
       end

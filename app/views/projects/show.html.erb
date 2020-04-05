@@ -10,6 +10,12 @@
         <% @project.tasks.each do |task| %>
           <%= render 'projects/tasks/task', task: task %>
         <% end %>
+
+        <div class="card mb-3">
+          <%= form_for([@project, @task], :html => {class: "form-horizontal", role: "form"}) do |f| %>
+            <%= f.text_field :body, class: "w-full", placeholder: "Add new task", autofocus: true %>
+          <% end %>
+        </div>
       </div>
 
       <div class="mb-8">
