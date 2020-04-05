@@ -31,7 +31,7 @@ module Projects
       @task.user = current_user
       @task.project = Project.find(params[:project_id])
       respond_to do |format|
-        if @task.save
+        if current_user.id == @task.project.user.id && @task.save
           format.html { redirect_to @task, notice: "Task was successfully created." }
           format.json { render :show, status: :created, location: @task }
         else

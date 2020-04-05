@@ -25,6 +25,17 @@ RSpec.describe Projects::TasksController, type: :controller do
         end
       end
     end
+
+    context "with project NOT associated with logged in user" do
+      let(:project) { create(:project) }
+
+      context "with valid attributes" do
+        it "creates a new task" do
+          post :create, params: { project_id: project, task: attributes_for(:task) }
+          expect(Task.count).to eq(0)
+        end
+      end
+    end
   end
 
   describe "Logged out user cannot POST #create" do
