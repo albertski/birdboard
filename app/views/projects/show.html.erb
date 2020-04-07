@@ -1,5 +1,12 @@
 
-<%= render 'projects/header', current_path: @project.title %>
+<header class="flex items-center mb-3 pb-4">
+  <div class="flex justify-between items-end w-full">
+      <p class="text-muted text-base font-light text-gray">
+        <%= link_to "My Projects", projects_path %>
+      </p>
+      <%= link_to "Edit Project", edit_project_path(@project), class: 'button' %>
+  </div>
+</header>
 
 <main>
   <div class="lg:flex -mx-3">
