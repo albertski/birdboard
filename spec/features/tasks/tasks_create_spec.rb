@@ -12,12 +12,11 @@ RSpec.feature "Task", type: :feature do
       visit "/projects/#{project.id}"
 
       task_body = "Create a new rspec test"
-
-      fill_in "Add new task", with: task_body
+      fill_in "task[body]", with: task_body
 
       submit_form '#new_task'
 
-      expect(page).to have_text(task_body)
+      expect(find('.edit_task .task-body').value).to eq task_body
       expect(page).to have_text(project.title)
     end
   end

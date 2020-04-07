@@ -45,11 +45,11 @@ module Projects
     # PATCH/PUT /projects/{id}/tasks/1.json
     def update
       respond_to do |format|
-        if @task.update(task_params)
-          format.html { redirect_to @task, notice: "Task was successfully updated." }
-          format.json { render :show, status: :ok, location: @task }
+        if current_user.id == @task.project.user.id && @task.update(task_params)
+          format.html { redirect_to @task.project, notice: "Task was successfully updated." }
+          format.json { render :show, status: :ok, location: @task.project }
         else
-          format.html { render :edit }
+          format.html { redirect_to @task.project, notice: "Task failed to be updated."}
           format.json { render json: @task.errors, status: :unprocessable_entity }
         end
       end
@@ -74,7 +74,7 @@ module Projects
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:body)
+      params.require(:task).permit(:body, :completed)
     end
 
     def can_access_task?

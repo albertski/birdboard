@@ -8,7 +8,7 @@
         <h2 class="text-gray text-large font-normal mb-3">Tasks</h2>
 
         <% @project.tasks.each do |task| %>
-          <%= render 'projects/tasks/task', task: task %>
+          <%= render 'projects/tasks/task', project: @project, task: task %>
         <% end %>
 
         <div class="card mb-3">
