@@ -10,6 +10,7 @@ RSpec.feature "Project", type: :feature do
 
     expect(page).to have_text(project.title)
     expect(page).to have_text(project.description)
+    expect(page).to have_text(project.notes)
   end
 
   scenario "Can't view other users projects" do

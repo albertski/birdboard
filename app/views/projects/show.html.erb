@@ -12,7 +12,7 @@
         <% end %>
 
         <div class="card mb-3">
-          <%= form_for([@project, @task], :html => {class: "form-horizontal", role: "form"}) do |f| %>
+          <%= form_for([@project, @task], :html => { role: "form" }) do |f| %>
             <%= f.text_field :body, class: "w-full", placeholder: "Add new task", autofocus: true %>
           <% end %>
         </div>
@@ -21,11 +21,11 @@
       <div class="mb-8">
         <h2 class="text-gray text-large font-normal mb-3">General Notes</h2>
 
-        <textarea class="card mb-3 w-full" style="min-height: 200px;">Lorim ipsum.</textarea>
+        <%= form_for([@project], :html => { role: "form" }) do |f| %>
+          <%= f.text_area :notes, class: "card w-full mb-4", placeholder: "Add new notes", autofocus: true %>
+          <%= f.submit("Update Project", class: 'button') %>
+        <% end %>
 
-        <textarea class="card mb-3 w-full" style="min-height: 200px;">Lorim ipsum.</textarea>
-
-        <textarea class="card w-full" style="min-height: 200px;">Lorim ipsum.</textarea>
       </div>
     </div>
     <div class="lg:w-1/4 px-3">
