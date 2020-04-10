@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :task do
-    body { Faker::Lorem.sentences(3).join(' ') }
+    body { Faker::Lorem.sentences(number: 3).join(' ') }
     completed { Faker::Boolean.boolean}
     project
     user

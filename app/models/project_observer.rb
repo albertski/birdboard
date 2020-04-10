@@ -1,20 +1,9 @@
 class ProjectObserver < ActiveRecord::Observer
   def after_create(project)
-    save_activity('created', project)
+    project.save_activity('project_created')
   end
 
   def after_update(project)
-    save_activity('updated', project)
+    project.save_activity('project_updated')
   end
-
-  def after_destroy(project)
-    save_activity('destroyed', project)
-  end
-
-  private
-
-  def save_activity(type, project)
-    Activity.create(description: type, project: project)
-  end
-
 end
