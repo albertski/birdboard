@@ -4,6 +4,7 @@ class CreateActivity < ActiveRecord::Migration[6.0]
       t.references :project, foreign_key: { on_delete: :cascade }
       t.string :description
       t.references :subject, polymorphic: true
+      t.text :metadata
       t.timestamps
     end
   end

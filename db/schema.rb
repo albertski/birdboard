@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_233955) do
     t.string "description"
     t.string "subject_type"
     t.bigint "subject_id"
+    t.text "metadata"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["project_id"], name: "index_activities_on_project_id"

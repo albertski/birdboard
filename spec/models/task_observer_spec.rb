@@ -7,10 +7,11 @@ RSpec.describe TaskObserver do
   end
 
   it "create activity on task update" do
-    task = create(:task)
-    task.body = "Test"
+    task = create(:task, body: "Old Body")
+    task.body = "New Body"
     task.save
     expect(Activity.last.description).to eq("task_updated")
+    expect(Activity.last.metadata["body"]).to eq(["Old Body", "New Body"])
   end
 
   it "when task is deleted activity is not deleted" do

@@ -7,10 +7,11 @@ RSpec.describe ProjectObserver, type: :model do
   end
 
   it "create activity on project update" do
-    project = create(:project)
-    project.title = "Test"
+    project = create(:project, title: "Old Title")
+    project.title = "New Title"
     project.save
     expect(Activity.last.description).to eq("project_updated")
+    expect(Activity.last.metadata["title"]).to eq(["Old Title", "New Title"])
   end
 
   it "deletes activity when project is deleted" do
