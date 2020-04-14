@@ -1,3 +1,7 @@
 <li class="mb-1">
-  <%= activity.description %> <span class="text-gray"> <%= time_ago_in_words activity.created_at %></span>
+  <% if activity.subject_type == 'Task' %>
+    <%= activity.description %> <b>"<%= activity.subject.body %>"</b> <span class="text-gray"> <%= time_ago_in_words activity.created_at %></span>
+  <% elsif activity.subject_type == 'Project' %>
+    <%= activity.description %> <b>"<%= activity.subject.title %>"</b> <span class="text-gray"> <%= time_ago_in_words activity.created_at %></span>
+  <% end %>
 </li>

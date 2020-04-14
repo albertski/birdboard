@@ -15,9 +15,12 @@ ActiveRecord::Schema.define(version: 2020_04_07_233955) do
   create_table "activities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "project_id"
     t.string "description"
+    t.string "subject_type"
+    t.bigint "subject_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["project_id"], name: "index_activities_on_project_id"
+    t.index ["subject_type", "subject_id"], name: "index_activities_on_subject_type_and_subject_id"
   end
 
   create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
