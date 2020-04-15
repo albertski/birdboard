@@ -6,7 +6,6 @@ module ActivityRecorder
   included do
     after_create :create_activity
     after_update :update_activity
-    after_destroy :delete_activity
   end
 
   private
@@ -17,10 +16,6 @@ module ActivityRecorder
 
   def update_activity
     save_activity 'updated'
-  end
-
-  def delete_activity
-    save_activity 'deleted'
   end
 
   def save_activity(type)
