@@ -10,8 +10,10 @@ RSpec.describe "Task Activity Recorder" do
     task = create(:task, body: "Old Body")
     task.body = "New Body"
     task.save
-    expect(Activity.last.description).to eq("updated")
-    expect(Activity.last.metadata["body"]).to eq(["Old Body", "New Body"])
+    activity = Activity.last
+    expect(activity.description).to eq("updated")
+    expect(activity.user).to eq(task.user)
+    expect(activity.metadata["body"]).to eq(["Old Body", "New Body"])
   end
 
   it "when task is deleted activity is not deleted" do

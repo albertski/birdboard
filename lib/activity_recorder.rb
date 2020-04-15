@@ -24,6 +24,10 @@ module ActivityRecorder
   end
 
   def save_activity(type)
-    Activity.create(description: type, project: self.try(:project) || self, subject: self, metadata: self.saved_changes.except(:updated_at))
+    Activity.create(description: type,
+                    project: self.try(:project) || self,
+                    subject: self,
+                    metadata: self.saved_changes.except(:updated_at),
+                    user: self.user)
   end
 end

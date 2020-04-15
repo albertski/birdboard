@@ -10,8 +10,10 @@ RSpec.describe "Project Activity Recorder" do
     project = create(:project, title: "Old Title")
     project.title = "New Title"
     project.save
-    expect(Activity.last.description).to eq("updated")
-    expect(Activity.last.metadata["title"]).to eq(["Old Title", "New Title"])
+    activity = Activity.last;
+    expect(activity.description).to eq("updated")
+    expect(activity.user).to eq(project.user)
+    expect(activity.metadata["title"]).to eq(["Old Title", "New Title"])
   end
 
   it "deletes activity when project is deleted" do
