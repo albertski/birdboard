@@ -1,4 +1,7 @@
+require_dependency 'activity_recorder'
+
 class Task < ApplicationRecord
+  include ActivityRecorder
   belongs_to :project, touch: true
   belongs_to :user
 
