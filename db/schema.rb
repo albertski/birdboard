@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_233955) do
+ActiveRecord::Schema.define(version: 2020_04_16_225041) do
 
   create_table "activities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "project_id"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 2020_04_07_233955) do
     t.index ["project_id"], name: "index_activities_on_project_id"
     t.index ["subject_type", "subject_id"], name: "index_activities_on_subject_type_and_subject_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "members_projects", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "projects_id"
+    t.bigint "users_id"
+    t.index ["projects_id"], name: "index_members_projects_on_projects_id"
+    t.index ["users_id"], name: "index_members_projects_on_users_id"
   end
 
   create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
