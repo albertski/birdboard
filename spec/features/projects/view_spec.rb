@@ -1,3 +1,4 @@
+require "rails_helper"
 
 RSpec.feature "Project", type: :feature do
   scenario "View own projects" do
@@ -13,5 +14,14 @@ RSpec.feature "Project", type: :feature do
     expect(page).to have_text("First Title")
     expect(page).to have_text("Second Title")
     expect(page).to have_no_text("Third Title")
+  end
+
+  scenario "View projects that memeber of" do
+    project = create(:project, title: "My Cool New Project")
+    user = create(:user)
+    project.invite user
+    login_as(user, scope: :user)
+    visit "/projects"
+    expect(page).to have_text("My Cool New Project")
   end
 end

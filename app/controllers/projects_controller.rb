@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = current_user.projects.all.order('updated_at DESC')
+   @projects = Project.where(user: current_user).or(Project.where(id: current_user)).order('updated_at DESC')
   end
 
   # GET /projects/1

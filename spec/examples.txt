@@ -15,7 +15,8 @@ example_id                                                | status | run_time   
 ./spec/features/projects/edit_spec.rb[1:1]                | passed | 0.10019 seconds |
 ./spec/features/projects/show_spec.rb[1:1]                | passed | 0.0539 seconds  |
 ./spec/features/projects/show_spec.rb[1:2]                | passed | 0.063 seconds   |
-./spec/features/projects/view_spec.rb[1:1]                | passed | 0.29245 seconds |
+./spec/features/projects/view_spec.rb[1:1]                | passed | 0.25998 seconds |
+./spec/features/projects/view_spec.rb[1:2]                | passed | 0.06512 seconds |
 ./spec/features/tasks/tasks_create_spec.rb[1:1:1]         | passed | 0.11607 seconds |
 ./spec/features/tasks/tasks_edit_spec.rb[1:1:1]           | passed | 0.14 seconds    |
 ./spec/models/project_activity_recorder_spec.rb[1:1]      | passed | 0.01882 seconds |
