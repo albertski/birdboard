@@ -1,3 +1,5 @@
+require 'digest/md5'
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -10,4 +12,8 @@ class User < ApplicationRecord
                           join_table: "members_projects",
                           foreign_key: "users_id",
                           association_foreign_key: "projects_id"
+
+  def get_md5_email
+    Digest::MD5.hexdigest(self.email)
+  end
 end

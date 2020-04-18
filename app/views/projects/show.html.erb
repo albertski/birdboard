@@ -4,7 +4,13 @@
       <p class="text-muted text-base font-light text-gray">
         <%= link_to "My Projects", projects_path %>
       </p>
-      <%= link_to "Edit Project", edit_project_path(@project), class: 'button' %>
+      <div class="flex items-center">
+        <% @project.members.each do |user| %>
+          <img src=<%= gravatar_email user.get_md5_email %>" alt="<%= user.username %>" class="rounded-full w-8 mr-2" />
+        <% end %>
+        <img src=<%= gravatar_email @project.user.get_md5_email %>" alt="<%= @project.user.username %>" class="rounded-full w-8 mr-2" />
+        <%= link_to "Edit Project", edit_project_path(@project), class: 'button ml-4' %>
+      </div>
   </div>
 </header>
 
