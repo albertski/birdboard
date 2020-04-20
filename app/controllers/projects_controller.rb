@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :require_user
-  before_action :can_access_project?, only: [:show]
+  before_action :verify_project_access, only: [:show]
 
   # GET /projects
   # GET /projects.json
@@ -76,7 +76,10 @@ class ProjectsController < ApplicationController
     params.require(:project).permit(:title, :description, :notes)
   end
 
-  def can_access_project?
-    @project.user == current_user
+  def verify_project_access
+    if @project.user != current_user
+      flash[:danger] = "You don't have access this project"
+      redirect_to projects_url
+    end
   end
 end

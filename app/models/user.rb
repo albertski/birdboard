@@ -13,7 +13,10 @@ class User < ApplicationRecord
                           foreign_key: "users_id",
                           association_foreign_key: "projects_id"
 
+  scope :with_email, ->(email) { where("email = ?", email) }
+
   def get_md5_email
     Digest::MD5.hexdigest(self.email)
   end
+
 end

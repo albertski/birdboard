@@ -1,3 +1,4 @@
+require "rails_helper"
 
 RSpec.feature "Project", type: :feature do
   scenario "View own project" do
@@ -14,8 +15,9 @@ RSpec.feature "Project", type: :feature do
   end
 
   scenario "Can't view other users projects" do
-    user = create(:user)
     project = create(:project, title: "Other Users Project")
+    user = create(:user)
+    login_as(user, scope: :user)
     visit "/projects/#{project.id}"
 
     expect(page).not_to have_text(project.title)
