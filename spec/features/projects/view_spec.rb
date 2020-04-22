@@ -5,10 +5,10 @@ RSpec.feature "Project", type: :feature do
     user = create(:user)
     login_as(user, scope: :user)
 
-    create(:project, title: "First Title", user: user)
-    create(:project, title: "Second Title", user: user)
+    project1 = create(:project, title: "First Title", user: user)
+    project2 = create(:project, title: "Second Title", user: user)
 
-    create(:project, title: "Third Title")
+    project3 = create(:project, title: "Third Title")
 
     visit "/projects"
     expect(page).to have_text("First Title")
@@ -16,7 +16,7 @@ RSpec.feature "Project", type: :feature do
     expect(page).to have_no_text("Third Title")
   end
 
-  scenario "View projects that memeber of" do
+  scenario "View projects that member of" do
     project = create(:project, title: "My Cool New Project")
     user = create(:user)
     project.invite user

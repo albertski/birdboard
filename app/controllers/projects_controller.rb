@@ -6,7 +6,9 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-   @projects = Project.where(user: current_user).or(Project.where(id: current_user)).order('updated_at DESC')
+   projects_as_owner = Project.where(user_id: current_user.id).ids
+   projects_as_member = Project.joins(:members).where(users: { id: current_user.id }).ids
+   @projects = Project.where(id: [projects_as_owner, projects_as_member].flatten).order('updated_at DESC')
   end
 
   # GET /projects/1
@@ -77,7 +79,7 @@ class ProjectsController < ApplicationController
   end
 
   def verify_project_access
-    if @project.user != current_user
+    if @project.user != current_user && !@project.members.exists?(current_user.id)
       flash[:danger] = "You don't have access this project"
       redirect_to projects_url
     end
