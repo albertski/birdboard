@@ -17,4 +17,8 @@ class Project < ApplicationRecord
   def invite(user)
     self.members << user unless self.members.include?(user)
   end
+
+  def has_as_user_or_member?(user)
+    self.user == user || self.members.exists?(user.id)
+  end
 end

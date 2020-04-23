@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  include Pundit
+  protect_from_forgery
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   helper_method :gravatar_email
 
   def gravatar_email(hashed_email)
@@ -10,5 +13,14 @@ class ApplicationController < ActionController::Base
       flash[:danger] = "You must be logged in to perform this action"
       redirect_to root_path
     end
+  end
+
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to perform this action."
+    redirect_to(request.referrer || root_path)
+  end
+
+  def run_authorize
+    @authorize
   end
 end

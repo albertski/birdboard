@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :require_user
-  before_action :verify_project_access, only: [:show]
+  before_action :run_authorize, only: [:show, :edit, :delete]
 
   # GET /projects
   # GET /projects.json
@@ -71,6 +71,7 @@ class ProjectsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_project
     @project = Project.find(params[:id])
+    authorize @project
   end
 
   # Only allow a list of trusted parameters through.

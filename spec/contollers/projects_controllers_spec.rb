@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe ProjectsController, type: :controller do
   describe "Logged in user" do
     before do
-      user = create(:user)
-      sign_in user
+      @user = create(:user)
+      sign_in @user
     end
 
     describe 'POST #create' do
@@ -25,7 +25,7 @@ RSpec.describe ProjectsController, type: :controller do
 
     describe 'DELETE #destroy' do
       it "can delete project" do
-        project = create(:project)
+        project = create(:project, user: @user)
         expect(Project.count).to eq(1)
         delete :destroy, params: { id: project.id }
         expect(Project.count).to eq(0)

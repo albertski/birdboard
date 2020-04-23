@@ -7,8 +7,10 @@
                                                 :separator => /\w/ %></div>
 
   <footer>
-    <div class="text-right">
-     <%= link_to "Delete", project_path(project), class: "text-xs", method: :delete %>
-   </div>
+    <% if policy(project).destroy? %>
+      <div class="text-right">
+       <%= link_to "Delete", project_path(project), class: "text-xs", method: :delete %>
+      </div>
+    <% end %>
   </footer>
 </div>
