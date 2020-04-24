@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     redirect_to(request.referrer || root_path)
   end
 
-  def run_authorize
-    @authorize
+  def policy_authorize(record)
+    authorize record
   end
 end
