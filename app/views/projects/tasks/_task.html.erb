@@ -1,7 +1,7 @@
 <div class="card mb-3">
   <%= form_for(task, :html => { role: "form" } ) do |f| %>
-    <div class="flex <%= "text-gray" if task.completed %>">
-      <%= f.text_field :body, class: "w-full task-body", placeholder: "Add new task", autofocus: true %>
+    <div class="flex <%= "text-default" if task.completed %>">
+      <%= f.text_field :body, class: "bg-card text-default w-full task-body", placeholder: "Add new task", autofocus: true %>
       <%= f.check_box :completed, class: "task-completed", onChange: "this.form.submit()" %>
     </div>
   <% end %>

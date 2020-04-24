@@ -1,9 +1,9 @@
 
 <div class="card" style="height: 200px;">
   <h3 class="font-normal text-xl mb-6 py-4 -ml-5 mb-3 border-l-4 border-blue-light pl-4">
-    <%= link_to project.title, project_path(project), class: "text-black no-underline" %>
+    <%= link_to project.title, project_path(project), class: "text-default no-underline" %>
   </h3>
-  <div class="text-gray mb-4"><%= truncate project.description.squish, :length => 250,
+  <div class="text-default mb-4"><%= truncate project.description.squish, :length => 250,
                                                 :separator => /\w/ %></div>
 
   <footer>

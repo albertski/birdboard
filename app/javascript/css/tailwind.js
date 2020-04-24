@@ -14,6 +14,7 @@ module.exports = {
 
       black: '#000',
       white: '#fff',
+      default: 'var(--text-default-color)',
 
       gray: {
         default: 'rgba(0, 0, 0, 0.4)',
@@ -128,6 +129,10 @@ module.exports = {
         800: '#97266d',
         900: '#702459',
       },
+      page: 'var(--page-background-color)',
+      card: 'var(--card-background-color)',
+      button: 'var(--button-background-color)',
+      header: 'var(--header-background-color)',
     },
     spacing: {
       px: '1px',

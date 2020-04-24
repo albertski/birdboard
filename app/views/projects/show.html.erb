@@ -1,7 +1,7 @@
 
 <header class="flex items-center mb-3 pb-4">
   <div class="flex justify-between items-end w-full">
-      <p class="text-muted text-base font-light text-gray">
+      <p class="text-muted text-base font-light text-default">
         <%= link_to "My Projects", projects_path %>
       </p>
       <div class="flex items-center">
@@ -18,7 +18,7 @@
   <div class="lg:flex -mx-3">
     <div class="lg:w-3/4 px-3">
       <div class="mb-8">
-        <h2 class="text-gray text-large font-normal mb-3">Tasks</h2>
+        <h2 class="text-default text-large font-normal mb-3">Tasks</h2>
 
         <% @project.tasks.each do |task| %>
           <%= render 'projects/tasks/task', project: @project, task: task %>
@@ -26,13 +26,13 @@
 
         <div class="card mb-3">
           <%= form_for([@project, @task], :html => { role: "form" }) do |f| %>
-            <%= f.text_field :body, class: "w-full", placeholder: "Add new task", autofocus: true %>
+            <%= f.text_field :body, class: "bg-card text-default w-full", placeholder: "Add new task", autofocus: true %>
           <% end %>
         </div>
       </div>
 
       <div class="mb-8">
-        <h2 class="text-gray text-large font-normal mb-3">General Notes</h2>
+        <h2 class="text-default text-large font-normal mb-3">General Notes</h2>
 
         <%= form_for([@project], :html => { role: "form" }) do |f| %>
           <%= f.text_area :notes, class: "card w-full mb-4", placeholder: "Add new notes", autofocus: true %>
