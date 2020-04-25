@@ -4,21 +4,8 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 
-.theme-light {
-  --page-background-color: #F5F6F9;
-  --card-background-color: white;
-  --button-background-color: #47cdff;
-  --header-background-color: white;
-  --text-default-color: black;
-}
-
-.theme-dark {
-  --page-background-color: #17181E;
-  --card-background-color: #1f2827 ;
-  --button-background-color: #59B6F8;
-  --header-background-color: #1F2027;
-  --text-default-color: white;
-}
+@import 'themes/light';
+@import 'themes/dark';
 
 .section {
    @apply .px-8;

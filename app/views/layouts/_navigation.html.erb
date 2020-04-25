@@ -5,6 +5,11 @@
       <div>
         <!-- Right Side Of Navbar -->
         <div class="flex items-center ml-auto">
+          <div data-controller="theme-switcher" class="mr-8 flex items-center">
+            <% { "theme-light" => "#f5f6f9", "theme-dark" => "#222" }.each do |theme, color| %>
+              <button data-target="theme-switcher.button" data-theme="<%= theme %>" data-action="click->theme-switcher#changeTo" class="rounded-full w-4 h-4 bg-default border border-accent mr-2" style="background-color: <%= color %>;"></button>
+            <% end %>
+          </div>
           <% if !user_signed_in? %>
             <%= link_to 'Login', new_user_session_path, class: 'text-accent mr-4 no-underline hover:underline' %>
             <%= link_to 'Register', new_user_registration_path, class: 'text-accent no-underline hover:underline' %>
