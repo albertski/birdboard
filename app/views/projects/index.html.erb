@@ -3,7 +3,7 @@
       <p class="text-muted text-base font-light text-default">
         <%= link_to "My Projects", projects_path %>
       </p>
-     <%= link_to "New Project", new_project_path, class: 'button' %>
+     <%= render 'projects/new_project_modal' %>
   </div>
 </header>
 
