@@ -21,6 +21,16 @@ RSpec.describe ProjectsController, type: :controller do
           expect(Project.count).to eq(0)
         end
       end
+
+      context "with tasks" do
+        it "creates tasks with a new project" do
+          post :create, params: { project: attributes_for(:project).merge({tasks_attributes: [
+            { body: 'Task 1' },
+            { body: 'Task 2' }
+          ]}) }
+          expect(Task.count).to eq(2)
+        end
+      end
     end
 
     describe 'DELETE #destroy' do

@@ -1,5 +1,7 @@
 
+<div class="project-errors">
 <%= render 'shared/errors', obj: @project %>
+</div>
 
 <%= form_for(@project, :html => { role: "form" }) do |f| %>
   <div class="field mb-6">

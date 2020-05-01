@@ -11,6 +11,8 @@ class ProjectsController < ApplicationController
    projects_as_owner = Project.where(user_id: current_user.id).ids
    projects_as_member = Project.joins(:members).where(users: { id: current_user.id }).ids
    @projects = Project.where(id: [projects_as_owner, projects_as_member].flatten).order('updated_at DESC')
+   @project = Project.new
+   2.times { @project.tasks.build }
   end
 
   # GET /projects/1
@@ -33,6 +35,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.user = current_user
+    @project.tasks.map { |task| task.user = current_user } if @project.tasks
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: "Project was successfully created." }
@@ -77,7 +80,7 @@ class ProjectsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def project_params
-    params.require(:project).permit(:title, :description, :notes)
+    params.require(:project).permit(:title, :description, :notes, tasks_attributes: [:body])
   end
 
   def verify_project_access
